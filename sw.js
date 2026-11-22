@@ -1,5 +1,5 @@
 /* Agenda Personal — funciona sem internet: guarda os arquivos do app no aparelho */
-const CACHE = 'agenda-personal-v3';
+const CACHE = 'agenda-personal-v4';
 const FILES = [
   './', './index.html', './style.css', './manifest.webmanifest',
   './js/base.js', './js/temas.js', './js/dados.js', './js/entrada.js', './js/personal.js', './js/aluno.js', './js/main.js',

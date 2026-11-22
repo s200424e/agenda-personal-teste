@@ -539,7 +539,7 @@ nav.tabs button { font-size: .72rem; }
 .leave-now .route { margin-bottom: 0; }
 
 /* ===== Correções de layout (telas estreitas, letra grande) ===== */
-html, body { overflow-x: hidden; }
+html, body { overflow-x: clip; } /* clip (e não hidden): esconde o que vaza para o lado sem travar a rolagem com o mouse */
 #app, main { min-width: 0; }
 .row > *, .grow { min-width: 0; }
 .grow b, .grow > div { overflow-wrap: anywhere; }
@@ -580,7 +580,8 @@ nav.tabs button .i svg { width: clamp(22px, 7vw, 28px); height: clamp(22px, 7vw,
 
 /* ===== Celular (áreas seguras de notch/barra, toque) ===== */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-body { padding-top: env(safe-area-inset-top); -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
+body { padding-top: env(safe-area-inset-top); -webkit-tap-highlight-color: transparent; }
+html { overscroll-behavior-y: none; }
 #app { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
 .sheet { padding-bottom: calc(28px + env(safe-area-inset-bottom)); max-height: calc(92vh - env(safe-area-inset-top)); overscroll-behavior: contain; }
 #toast { bottom: calc(100px + env(safe-area-inset-bottom)); }
