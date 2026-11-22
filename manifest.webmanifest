@@ -1,0 +1,17 @@
+{
+  "name": "Agenda Personal",
+  "short_name": "Agenda Personal",
+  "description": "Agenda simples entre personal trainer e alunos: marcar aulas, planos e frequência.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1d1e20",
+  "theme_color": "#1d1e20",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

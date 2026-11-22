@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1d1e20" />
+  <meta name="description" content="Agenda simples entre personal trainer e alunos." />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Agenda Personal" />
+  <title>Agenda Personal</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true"></div>
+  <noscript>Ative o JavaScript para usar o Agenda Personal.</noscript>
+  <script src="js/base.js"></script>
+  <script src="js/temas.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/entrada.js"></script>
+  <script src="js/personal.js"></script>
+  <script src="js/aluno.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Dentro do app nativo (Capacitor), links externos (WhatsApp, Waze, Maps) abrem no app do celular
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[target="_blank"]');
+      if (!a || !window.Capacitor || !window.Capacitor.isNativePlatform || !window.Capacitor.isNativePlatform()) return;
+      e.preventDefault(); window.open(a.href, '_system');
+    });
+    // Versão web: funciona sem internet depois do primeiro acesso
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http') && !(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform())) {
+      window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+    }
+  </script>
+</body>
+</html>
