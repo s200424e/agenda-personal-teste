@@ -14,20 +14,23 @@
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-  <link rel="stylesheet" href="style.css" />
+  <!-- estilo: base (tudo) + celular (até 899 px) + computador (900 px+). O "?v=" muda a cada publicação para o navegador não usar versão velha -->
+  <link rel="stylesheet" href="css/base.css?v=202611221156" />
+  <link rel="stylesheet" href="css/celular.css?v=202611221156" media="(max-width: 899.98px)" />
+  <link rel="stylesheet" href="css/computador.css?v=202611221156" media="(min-width: 900px)" />
 </head>
 <body>
   <div id="app"></div>
   <div id="toast" role="status" aria-live="polite"></div>
   <div id="modal" class="modal hidden" role="dialog" aria-modal="true"></div>
   <noscript>Ative o JavaScript para usar o Agenda Personal.</noscript>
-  <script src="js/base.js"></script>
-  <script src="js/temas.js"></script>
-  <script src="js/dados.js"></script>
-  <script src="js/entrada.js"></script>
-  <script src="js/personal.js"></script>
-  <script src="js/aluno.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/base.js?v=202611221156"></script>
+  <script src="js/temas.js?v=202611221156"></script>
+  <script src="js/dados.js?v=202611221156"></script>
+  <script src="js/entrada.js?v=202611221156"></script>
+  <script src="js/personal.js?v=202611221156"></script>
+  <script src="js/aluno.js?v=202611221156"></script>
+  <script src="js/main.js?v=202611221156"></script>
   <script>
     // Dentro do app nativo (Capacitor), links externos (WhatsApp, Waze, Maps) abrem no app do celular
     document.addEventListener('click', function (e) {

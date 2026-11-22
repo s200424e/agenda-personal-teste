@@ -1,3 +1,8 @@
+/* Agenda Personal — ESTILO BASE (vale para celular e computador)
+   Cores, temas, cards, botões, calendário, gráficos.
+   O que muda de posição/tamanho por tipo de tela fica em:
+     celular.css     → telas até 899 px (celular e tablet)
+     computador.css  → telas a partir de 900 px */
 :root {
   /* Paleta "Grafite & Âmbar"
      grafite  = força, foco, confiança (sem a dureza do preto puro)
@@ -34,7 +39,7 @@ body {
   color: var(--ink);
   line-height: 1.45;
 }
-#app { max-width: 560px; margin: 0 auto; min-height: 100vh; padding-bottom: 96px; }
+#app { margin: 0 auto; min-height: 100vh; }
 h1 { font-size: 1.6rem; margin: 0 0 4px; }
 h2 { font-size: 1.2rem; margin: 24px 0 10px; }
 p { margin: 0 0 8px; }
@@ -124,19 +129,8 @@ input, select {
 
 .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-weight: 700; flex: none; }
 
-/* Barra inferior */
-nav.tabs {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  background: #fff; border-top: 1px solid var(--line);
-  display: flex; justify-content: center;
-  padding-bottom: env(safe-area-inset-bottom);
-}
-nav.tabs .inner { display: flex; width: 100%; max-width: 560px; }
-nav.tabs button {
-  background: none; color: var(--muted); border-radius: 0; font-weight: 600;
-  display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: .8rem; padding: 10px 0; min-height: 68px;
-}
-nav.tabs button .i { font-size: 1.4rem; }
+/* Menu de abas: só cores aqui. A posição fica em celular.css (barra embaixo) e computador.css (menu lateral) */
+nav.tabs button { background: none; color: var(--muted); font-weight: 600; }
 nav.tabs button.on { color: var(--primary); }
 
 .weekday-row { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 8px; align-items: center; margin-bottom: 8px; }
@@ -147,11 +141,11 @@ nav.tabs button.on { color: var(--primary); }
 .empty { text-align: center; padding: 28px 12px; color: var(--muted); }
 
 /* Modal + toast */
-.modal { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: flex; align-items: flex-end; justify-content: center; z-index: 20; }
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: flex; justify-content: center; z-index: 20; }
 .modal.hidden { display: none; }
-.sheet { background: #fff; width: 100%; max-width: 560px; border-radius: 22px 22px 0 0; padding: 22px 20px 28px; max-height: 90vh; overflow: auto; }
+.sheet { background: #fff; width: 100%; overflow: auto; }
 #toast {
-  position: fixed; left: 50%; bottom: 96px; transform: translateX(-50%);
+  position: fixed; left: 50%; transform: translateX(-50%);
   background: var(--ink); color: #fff; padding: 12px 20px; border-radius: 12px;
   opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 30; max-width: 90vw; text-align: center;
 }
@@ -216,7 +210,7 @@ body:has(.welcome) { background: var(--welcome-bg); }
 .slot.full small { text-decoration: none; }
 
 /* Barra inferior grafite */
-nav.tabs { background: var(--strong); border-top: 1px solid var(--line); }
+nav.tabs { background: var(--strong); }
 nav.tabs button { color: #9e998f; }
 nav.tabs button.on { color: var(--accent); }
 nav.tabs button.on .i { filter: none; }
@@ -276,11 +270,11 @@ body, .card, .metric, input, select, nav.tabs, .sheet, button { transition: back
 .info-line { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
 .info-line b { font-variant-numeric: tabular-nums; }
 
-/* Ícones da barra inferior em âmbar */
+/* Ícones do menu em âmbar; o traço da aba ativa (posição em celular.css / computador.css) */
 nav.tabs button { position: relative; }
-nav.tabs button .i { color: var(--accent); display: grid; place-items: center; height: 28px; opacity: .75; }
+nav.tabs button .i { color: var(--accent); display: grid; place-items: center; opacity: .75; }
 nav.tabs button.on .i { opacity: 1; }
-nav.tabs button.on::before { content: ''; position: absolute; top: 0; left: 30%; right: 30%; height: 3px; border-radius: 0 0 3px 3px; background: var(--accent); }
+nav.tabs button.on::before { content: ''; position: absolute; background: var(--accent); }
 
 /* Início do aluno */
 .next-card { border-left: 4px solid var(--accent); }
@@ -435,7 +429,6 @@ button.danger-solid { background: var(--danger); color: #fff; }
 .m-cancel { color: var(--danger); }
 .m-adh { margin-top: 8px; font-size: .8rem; color: var(--muted); }
 .m-adh .bar { margin: 4px 0; }
-nav.tabs button { font-size: .72rem; }
 
 /* ===== Métricas v2 ===== */
 /* cards que expandem ao passar o mouse / tocar */
@@ -563,7 +556,6 @@ html, body { overflow-x: clip; } /* clip (e não hidden): esconde o que vaza par
 .m-split { gap: 6px 14px; }
 .chips { row-gap: 8px; }
 .sheet { overflow-x: hidden; }
-nav.tabs button { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .row > button, .row > a.btn, .row > .tag, .row > .m-score { flex-shrink: 0; min-width: auto; }
 .check input { width: 32px; height: 32px; flex: none; }
 .row.between { flex-wrap: wrap; gap: 6px 12px; }
@@ -572,21 +564,12 @@ nav.tabs button { min-width: 0; overflow: hidden; text-overflow: ellipsis; white
 .cal-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
 .cal-d { font-size: min(1rem, 4.6vw); }
 .cal-head button { min-width: 44px; }
-nav.tabs button { font-size: clamp(11px, 3.3vw, 14px); }
-nav.tabs button .i svg { width: clamp(22px, 7vw, 28px); height: clamp(22px, 7vw, 28px); }
 .cal-w { font-size: min(.75rem, 3.4vw); overflow: hidden; }
 .weekday-row .check { gap: 6px; font-size: min(1rem, 4.4vw); }
 .check input { width: 28px; height: 28px; }
 
-/* ===== Celular (áreas seguras de notch/barra, toque) ===== */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-body { padding-top: env(safe-area-inset-top); -webkit-tap-highlight-color: transparent; }
-html { overscroll-behavior-y: none; }
-#app { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
-.sheet { padding-bottom: calc(28px + env(safe-area-inset-bottom)); max-height: calc(92vh - env(safe-area-inset-top)); overscroll-behavior: contain; }
-#toast { bottom: calc(100px + env(safe-area-inset-bottom)); }
-nav.tabs, .day, .cal-d, .slot, .chip { user-select: none; -webkit-user-select: none; }
-input, select, textarea { font-size: max(16px, 1rem); } /* evita zoom automático do iPhone ao digitar */
+.sheet { overscroll-behavior: contain; } /* rolar dentro da janela não rola a página atrás */
 .tag { max-width: 100%; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; }
 .att .small { overflow: hidden; }
 .info-line { flex-wrap: wrap; gap: 4px 8px; }
@@ -610,88 +593,8 @@ input, select, textarea { font-size: max(16px, 1rem); } /* evita zoom automátic
 :root[data-season] .avatar { color: color-mix(in srgb, var(--accent) 55%, #fff); }
 :root[data-season] nav.tabs button.on::before { background: color-mix(in srgb, var(--accent) 55%, #fff); }
 
-/* ===== Seções: no celular ficam empilhadas (como sempre); no computador viram colunas ===== */
+/* ===== Peças comuns às duas versões ===== */
 .dash > section, .split > section, .set-grid > section { min-width: 0; }
-.nav-brand { display: none; }
 .cards-grid > .card { margin-bottom: 12px; }
-
-/* ===== Tablet (700 px+): conteúdo mais largo, grades de 2 colunas ===== */
-@media (min-width: 700px) {
-  #app { max-width: 760px; }
-  nav.tabs .inner { max-width: 760px; }
-  .v-metricas .metrics, [data-role=aluno] .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .cards-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
-  .cards-grid > .card { margin: 0; }
-  .slot-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
-  .slot-list > .card { margin: 0; }
-  .sheet { max-width: 640px; }
-}
-
-/* ===== Computador (900 px+): menu lateral, painéis lado a lado, janelas no centro ===== */
-@media (min-width: 900px) {
-  :root { --side: 248px; }
-  body:not(:has(.welcome)):has(nav.tabs) { padding-left: var(--side); }
-  #app { max-width: 1240px; padding: 8px 40px 48px; }
-  header.top { padding: 24px 0 4px; }
-  main { padding: 0; }
-  h1 { font-size: 2rem; }
-  h2 { margin-top: 28px; }
-
-  /* menu lateral */
-  nav.tabs { top: 0; bottom: 0; right: auto; width: var(--side); flex-direction: column; justify-content: flex-start; align-items: stretch;
-    border-top: 0; border-right: 1px solid var(--line); padding: 22px 14px; gap: 18px; z-index: 10; }
-  .nav-brand { display: flex; align-items: center; gap: 12px; padding: 4px 10px 18px; border-bottom: 1px solid rgba(255,255,255,.08); color: #fff; font-weight: 800; font-size: 1.05rem; line-height: 1.2; }
-  .nav-brand img { border-radius: 10px; flex: none; }
-  .nav-brand small { display: block; font-weight: 500; font-size: .72rem; color: #9e998f; margin-top: 2px; }
-  nav.tabs .inner { flex-direction: column; max-width: none; gap: 4px; }
-  nav.tabs button { flex-direction: row; justify-content: flex-start; gap: 14px; min-height: 52px; padding: 10px 14px; border-radius: 12px;
-    font-size: 1rem !important; text-overflow: clip; width: 100%; transition: background-color .15s; }
-  nav.tabs button .i { height: auto; }
-  nav.tabs button .i svg { width: 24px !important; height: 24px !important; }
-  nav.tabs button:hover { background: rgba(255,255,255,.06); }
-  nav.tabs button.on { background: color-mix(in srgb, var(--accent) 16%, transparent); }
-  nav.tabs button.on::before { top: 12px; bottom: 12px; left: 0; right: auto; width: 4px; height: auto; border-radius: 0 4px 4px 0; }
-
-  /* painéis */
-  .dash { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-  .dash-b > h2:first-child, .dash-a > h2:first-child { margin-top: 24px; }
-  .split { display: grid; grid-template-columns: minmax(360px, 440px) minmax(0, 1fr); gap: 32px; align-items: start; }
-  .split-a { position: sticky; top: 16px; }
-  .set-grid { columns: 2; column-gap: 32px; }
-  .set-grid > section { break-inside: avoid; display: flow-root; }
-  .set-grid > section > h2:first-child, .set-grid > section > form:first-child > h2:first-child { margin-top: 24px; }
-  .dash .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); overflow: visible; }
-  .t-actions button { white-space: nowrap; }
-  body:has(nav.tabs) .modal { padding-left: calc(var(--side) + 24px); }
-  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-  .slot-list { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-  .slots { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
-  .m-tools { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin: 10px 0 4px; }
-  .m-tools .search { flex: 1 1 320px; max-width: 520px; margin: 0; }
-  .m-tools .chips { margin: 0; }
-  .day-chart { height: 220px; }
-
-  /* janelas (perfil, cobrança...) no centro da tela */
-  .modal { align-items: center; padding: 24px; }
-  .sheet { max-width: 640px; border-radius: 22px; max-height: 88vh; padding: 26px 28px 28px; box-shadow: 0 30px 80px rgba(0,0,0,.35); animation: sheet-pop .18s ease-out; }
-  #toast { bottom: 32px; left: calc(50% + var(--side) / 2); }
-  body:has(.welcome) #toast, body:not(:has(nav.tabs)) #toast { left: 50%; }
-
-  /* mouse */
-  button, .btn, .cal-d, .slot, .chip, [data-act], [data-tab] { cursor: pointer; }
-  .card.student-row:hover, .m-row:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
-
-  /* entrada e cadastro centralizados */
-  .welcome { min-height: calc(100vh - 40px); display: flex; flex-direction: column; justify-content: center; max-width: 520px; margin: 0 auto; }
-}
-@keyframes sheet-pop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
-
-/* ===== Telas bem largas: mais respiro ===== */
-@media (min-width: 1400px) {
-  #app { padding: 8px 56px 56px; }
-}
 /* entrada, login e cadastro: coluna estreita e centralizada em qualquer tela */
 body:not(:has(nav.tabs)) #app { max-width: 560px; }
-@media (min-width: 900px) { body:not(:has(nav.tabs)) #app { padding-top: 6vh; } }

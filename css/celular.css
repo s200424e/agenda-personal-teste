@@ -1,0 +1,52 @@
+/* Agenda Personal — CELULAR E TABLET (telas até 899 px)
+   Carregado com media="(max-width: 899.98px)": no computador o navegador ignora este arquivo. */
+
+/* coluna central + espaço para a barra de abas e para o entalhe (notch) do celular */
+#app { max-width: 560px; padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+body { padding-top: env(safe-area-inset-top); -webkit-tap-highlight-color: transparent; }
+html { overscroll-behavior-y: none; } /* sem o "puxa e estica" da página no celular */
+
+/* barra de abas fixa embaixo */
+nav.tabs {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: center;
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+nav.tabs .inner { display: flex; width: 100%; max-width: 560px; }
+nav.tabs button {
+  border-radius: 0; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 10px 0; min-height: 68px; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: clamp(11px, 3.3vw, 14px);
+}
+nav.tabs button .i { height: 28px; }
+nav.tabs button .i svg { width: clamp(22px, 7vw, 28px); height: clamp(22px, 7vw, 28px); }
+nav.tabs button.on::before { top: 0; left: 30%; right: 30%; height: 3px; border-radius: 0 0 3px 3px; }
+.nav-brand { display: none; } /* logo do menu lateral: só no computador */
+
+/* janelas sobem de baixo, como no celular */
+.modal { align-items: flex-end; }
+.sheet {
+  max-width: 560px; border-radius: 22px 22px 0 0;
+  padding: 22px 20px calc(28px + env(safe-area-inset-bottom));
+  max-height: calc(92vh - env(safe-area-inset-top));
+}
+#toast { bottom: calc(100px + env(safe-area-inset-bottom)); }
+
+/* toque: não seleciona texto sem querer; letra 16px evita o zoom automático do iPhone ao digitar */
+nav.tabs, .day, .cal-d, .slot, .chip { user-select: none; -webkit-user-select: none; }
+input, select, textarea { font-size: max(16px, 1rem); }
+
+/* ===== Tablet (700 a 899 px): conteúdo mais largo e grades de 2 colunas ===== */
+@media (min-width: 700px) {
+  #app { max-width: 760px; }
+  body:not(:has(nav.tabs)) #app { max-width: 560px; }
+  nav.tabs .inner { max-width: 760px; }
+  .v-metricas .metrics, [data-role=aluno] .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cards-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
+  .cards-grid > .card { margin: 0; }
+  .slot-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
+  .slot-list > .card { margin: 0; }
+  .sheet { max-width: 640px; }
+}

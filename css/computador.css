@@ -1,0 +1,79 @@
+/* Agenda Personal — COMPUTADOR (telas a partir de 900 px)
+   Carregado com media="(min-width: 900px)": no celular o navegador ignora este arquivo.
+   Menu lateral, painéis lado a lado, janelas no centro, mouse. */
+
+:root { --side: 248px; }
+
+/* página: deixa espaço para o menu lateral */
+body:has(nav.tabs) { padding-left: var(--side); }
+#app { max-width: 1240px; padding: 8px 40px 48px; }
+body:not(:has(nav.tabs)) #app { max-width: 560px; padding-top: 6vh; }
+header.top { padding: 24px 0 4px; }
+main { padding: 0; }
+h1 { font-size: 2rem; }
+h2 { margin-top: 28px; }
+
+/* menu lateral fixo */
+nav.tabs {
+  position: fixed; top: 0; bottom: 0; left: 0; width: var(--side); z-index: 10;
+  display: flex; flex-direction: column; gap: 18px;
+  padding: 22px 14px; border-right: 1px solid var(--line); overflow-y: auto;
+}
+.nav-brand { display: flex; align-items: center; gap: 12px; padding: 4px 10px 18px; border-bottom: 1px solid rgba(255,255,255,.08); color: #fff; font-weight: 800; font-size: 1.05rem; line-height: 1.2; }
+.nav-brand img { border-radius: 10px; flex: none; }
+.nav-brand small { display: block; font-weight: 500; font-size: .72rem; color: #9e998f; margin-top: 2px; }
+nav.tabs .inner { display: flex; flex-direction: column; gap: 4px; }
+nav.tabs button {
+  display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 14px;
+  width: 100%; min-height: 52px; padding: 10px 14px; border-radius: 12px; font-size: 1rem; text-align: left;
+  transition: background-color .15s;
+}
+nav.tabs button .i svg { width: 24px; height: 24px; }
+nav.tabs button:hover { background: rgba(255,255,255,.06); }
+nav.tabs button.on { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+nav.tabs button.on::before { top: 12px; bottom: 12px; left: 0; width: 4px; border-radius: 0 4px 4px 0; }
+
+/* painéis lado a lado */
+.dash { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.dash-b > h2:first-child, .dash-a > h2:first-child { margin-top: 24px; }
+.split { display: grid; grid-template-columns: minmax(360px, 440px) minmax(0, 1fr); gap: 32px; align-items: start; }
+.split-a { position: sticky; top: 16px; }
+.set-grid { columns: 2; column-gap: 32px; }
+.set-grid > section { break-inside: avoid; display: flow-root; }
+.set-grid > section > h2:first-child, .set-grid > section > form:first-child > h2:first-child { margin-top: 24px; }
+
+/* grades */
+.v-metricas .metrics, [data-role=aluno] .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.dash .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; align-items: start; }
+.cards-grid > .card { margin: 0; }
+.slot-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; align-items: start; }
+.slot-list > .card { margin: 0; }
+.slots { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+.badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); overflow: visible; }
+.t-actions button { white-space: nowrap; }
+.m-tools { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin: 10px 0 4px; }
+.m-tools .search { flex: 1 1 320px; max-width: 520px; margin: 0; }
+.m-tools .chips { margin: 0; }
+.day-chart { height: 220px; }
+
+/* janelas (perfil, cobrança, detalhes) no centro da área de conteúdo */
+.modal { align-items: center; padding: 24px; }
+body:has(nav.tabs) .modal { padding-left: calc(var(--side) + 24px); }
+.sheet { max-width: 640px; border-radius: 22px; max-height: 88vh; padding: 26px 28px 28px; box-shadow: 0 30px 80px rgba(0,0,0,.35); animation: sheet-pop .18s ease-out; }
+@keyframes sheet-pop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
+#toast { bottom: 32px; }
+body:has(nav.tabs) #toast { left: calc(50% + var(--side) / 2); }
+
+/* mouse */
+button, .btn, .cal-d, .slot, .chip, [data-act], [data-tab] { cursor: pointer; }
+.card.student-row:hover, .m-row:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+
+/* tela de boas-vindas centralizada */
+.welcome { min-height: calc(100vh - 40px); display: flex; flex-direction: column; justify-content: center; max-width: 520px; margin: 0 auto; }
+
+/* telas bem largas: mais respiro */
+@media (min-width: 1400px) {
+  #app { padding: 8px 56px 56px; }
+}
